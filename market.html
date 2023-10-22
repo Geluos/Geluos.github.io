@@ -1,9 +1,9 @@
 <div class = "maindiv">
-	<div class="title">РЖД МАРКЕТ <img class = "mimg" src = "{{ url_for('static', filename='images/market.png') }}"/> </div>
+	<div class="title">РЖД МАРКЕТ <img class = "mimg" src = "images/market.png"/> </div>
 	<div class="flexboxes"  id = "flexbox"> </div>
 </div>
 <div class="block" id = "adam" hidden>
-	<img class="imgres" src = "{{ url_for('static', filename='images/coke.png') }}" alt=""/>
+	<img class="imgres" src = "images/coke.png" alt=""/>
 	<div class="goodName"> Газировка</div>
 	<div class="goodButton" id="price">100₽</div>
 </div>
@@ -21,7 +21,7 @@
 			if (child.classList[0] == 'goodButton')
 				child.textContent=price;
 			if (child.classList[0] == 'imgres')
-				child.src  = "{{ url_for('static', filename='images/train.jpg') }}";
+				child.src  = "images/" + imageName;
 			if (child.classList[0] == 'goodName')
 				child.textContent=name;
 		}
