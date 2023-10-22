@@ -20,13 +20,25 @@
 		{
 			var child = children[i];
 			if (child.classList[0] == 'goodButton')
+			{
 				child.textContent=price;
+				child.addEventListener("click", () => 
+				{
+					let ls = window.localStorage.getItem("sum");
+					let pp = child.textContent.substring(0, child.textContent.length - 1);
+					window.localStorage.setItem("sum", parseInt(ls)+parseInt(pp));
+					ls = parseInt(ls)+parseInt(pp);
+					let buyButton = document.getElementById("buyButton");
+					buyButton.textContent = "Корзина " + ls  + '.00₽';
+				});
+			}
 			if (child.classList[0] == 'imgres')
 				child.src  = "images/" + imageName;
 			if (child.classList[0] == 'goodName')
 				child.textContent=name;
 		}
 	}
+	window.localStorage.setItem("sum", '0')
 	//Заглушечка
 	let arrayPhotos = ["Завтрак в вагоне СВ.jpg", 
 	"Обед в купейном вагоне (детский).jpg", "Ужин в купейном вагоне (вегетарианский).jpg",
