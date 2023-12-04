@@ -33,7 +33,6 @@ class Market{
 
 	createGoods()
 	{
-		window.localStorage.setItem("sum", '0');
 		let params = new URLSearchParams(window.location.search);
 		let arrayPhotos = params.get("photos");
 		let prices = params.get("prices");
