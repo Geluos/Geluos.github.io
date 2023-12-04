@@ -18,7 +18,7 @@ class Market{
 				child.textContent=price;
 				child.addEventListener("click", () => 
 				{
-					this.#sum += price;
+					this.#sum += parseInt(price);
 					let buyButton = document.getElementById("buyButton");
 					buyButton.textContent = "Корзина " + this.#sum  + '.00₽';
 					this.#zakaz.push(name);
@@ -35,9 +35,9 @@ class Market{
 	{
 		let params = new URLSearchParams(window.location.search);
 		console.log(params);
-		let arrayPhotos = params.get("photos");
-		let prices = params.get("prices");
-		let names = params.get("names");
+		let arrayPhotos = params.get("photos").split(',');
+		let prices = params.get("prices").split(',');
+		let names = params.get("names").split(',');
 		let box = document.getElementById("flexbox");
 		let element = document.getElementById("adam");
 		for (let i = 0; i < arrayPhotos.length; i++) 
