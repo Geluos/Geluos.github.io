@@ -34,6 +34,7 @@ class Market{
 	createGoods()
 	{
 		let params = new URLSearchParams(window.location.search);
+		console.log(params);
 		let arrayPhotos = params.get("photos");
 		let prices = params.get("prices");
 		let names = params.get("names");
