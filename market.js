@@ -1,8 +1,10 @@
 class Market{
 	#map;
 	#log;
+	#sum
 
 	constructor() {
+		this.#log = 0;
 	}
 
 	updateElem(element, name, price, imageName)
@@ -16,12 +18,9 @@ class Market{
 				child.textContent=price;
 				child.addEventListener("click", () => 
 				{
-					let ls = window.localStorage.getItem("sum");
-					let pp = child.textContent.substring(0, child.textContent.length - 1);
-					window.localStorage.setItem("sum", parseInt(ls)+parseInt(pp));
-					ls = parseInt(ls)+parseInt(pp);
+					this.#sum += price;
 					let buyButton = document.getElementById("buyButton");
-					buyButton.textContent = "Корзина " + ls  + '.00₽';
+					buyButton.textContent = "Корзина " + this.#sum  + '.00₽';
 				});
 			}
 			if (child.classList[0] == 'imgres')
@@ -34,14 +33,12 @@ class Market{
 	createGoods()
 	{
 		window.localStorage.setItem("sum", '0')
-		let arrayPhotos = ["Завтрак в вагоне СВ.jpg", 
-		"Обед в купейном вагоне (детский).jpg", "Ужин в купейном вагоне (вегетарианский).jpg",
-		 "Сэндвич с сыром.jpg", "Салат из свежих овощей.jpg", "coke.png"];
-		let prices = ["500₽", "100₽", "500₽", "400₽", "600₽", "100₽", "250₽", "100₽", "350₽", "250₽", "550₽"];
-		let names = ["Завтрак Взрослый",  "Детский обед", "Ужин (вег.)", "Сэндвич с сыром", "Обед витаминный", "Газировка"];
+		let arrayPhotos = document.querySelector('input[name=photos]').value;
+		let prices = document.querySelector('input[name=prices]').value;
+		let names = document.querySelector('input[name=names]').value;
 		let box = document.getElementById("flexbox");
 		let element = document.getElementById("adam");
-		for (let i = 0; i < 6; i++) 
+		for (let i = 0; i < arrayPhotos.length; i++) 
 		{
 			let new_element = element.cloneNode(true);
 			new_element.removeAttribute("hidden");
